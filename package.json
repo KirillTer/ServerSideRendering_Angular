@@ -5,13 +5,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build:server": "webpack -p",
+    "build:aot": "ng build --aot --app 1",
+    "build:client": "ng build -prod --build-optimizer --app 0",
+    "build": "run-s build:client build:aot build:server",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "^0.2.0",
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
@@ -20,9 +24,14 @@
     "@angular/http": "^5.0.0",
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
+    "@angular/platform-server": "^5.2.3",
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
+    "express": "^4.16.2",
+    "npm-run-all": "^4.1.2",
     "rxjs": "^5.5.2",
+    "ts-loader": "^3.4.0",
+    "webpack-node-externals": "^1.6.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
